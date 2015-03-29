@@ -14,8 +14,9 @@ NSString * const KWebPProtocolKey = @"KWebPProtocolKey";
 
 @interface WebPURLProtocol ()
 
-@property (nonatomic,retain)NSURLConnection* connection;
-@property (nonatomic,retain)WebPConverter*   webpcnv;
+@property (nonatomic,retain)NSURLConnection*    connection;
+@property (nonatomic,retain)WebPConverter*      webpcnv;
+@property (nonatomic,assign)BOOL                isPushWebPData;
 
 @end
 
@@ -168,9 +169,20 @@ NSString * const KWebPProtocolKey = @"KWebPProtocolKey";
         WebPConverterError error = WebPConverterError_None;
         NSData* resultdata = [self.webpcnv incrementalCovert:data withError:&error];
         if (error == WebPConverterError_None) {
+            self.isPushWebPData = TRUE;
+            if ([resultdata length] == 0) {
+                return;
+            }
             data = resultdata;
         } else {
             self.webpcnv = nil;
+            if (self.isPushWebPData) {
+                [[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:@"WebP decode Error"
+                                                                                    code:-123
+                                                                                userInfo:nil]];
+                [self stopLoading];
+                return;
+            }
         }
     }
     [[self client] URLProtocol:self didLoadData:data];
