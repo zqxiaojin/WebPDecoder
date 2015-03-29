@@ -13,12 +13,20 @@ typedef enum : NSUInteger {
     EWebPConverter_notSupport
 } WebPConverterType;
 
+typedef enum : NSUInteger {
+    WebPConverterError_None,
+    WebPConverterError_wrongFormat,
+//    EWebPConverter_notSupport
+} WebPConverterError;
+
+
+
 @interface WebPConverter : NSObject
 
 - (instancetype)initWithType:(WebPConverterType)type;
 
 
-- (NSData*)incrementalCovert:(NSData*)inputData;
+- (NSData*)incrementalCovert:(NSData*)inputData withError:(WebPConverterError*)error;
 
 - (NSData*)finishPushData;
 

@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3C906DBC1A5EC1A6005696B6 /* test2.webp in Resources */ = {isa = PBXBuildFile; fileRef = 3C906DBB1A5EC194005696B6 /* test2.webp */; };
-		940E5F231A5BC1C400BC6371 /* test_alpha.webp in Resources */ = {isa = PBXBuildFile; fileRef = 940E5F221A5BC1C400BC6371 /* test_alpha.webp */; };
-		940E5F251A5BDDD600BC6371 /* test.webp in Resources */ = {isa = PBXBuildFile; fileRef = 940E5F241A5BDDCC00BC6371 /* test.webp */; };
 		943699BD1AC793D800B35B35 /* libwebpcnv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 943698541AC791EE00B35B35 /* libwebpcnv.a */; };
+		94AB4B941AC79D96009A96EC /* WebPURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB4B931AC79D96009A96EC /* WebPURLProtocol.m */; };
 		94E4F9AA1A5A8A2800997F20 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E4F9A91A5A8A2800997F20 /* main.m */; };
 		94E4F9AD1A5A8A2800997F20 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E4F9AC1A5A8A2800997F20 /* AppDelegate.m */; };
 		94E4F9B01A5A8A2800997F20 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 94E4F9AF1A5A8A2800997F20 /* ViewController.mm */; };
@@ -31,11 +29,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3C906DBB1A5EC194005696B6 /* test2.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = test2.webp; sourceTree = "<group>"; };
-		940E5F221A5BC1C400BC6371 /* test_alpha.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_alpha.webp; sourceTree = "<group>"; };
-		940E5F241A5BDDCC00BC6371 /* test.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.webp; sourceTree = "<group>"; };
 		9436984E1AC791ED00B35B35 /* webpcnv.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = webpcnv.xcodeproj; path = webpcnv/webpcnv.xcodeproj; sourceTree = "<group>"; };
 		943699C01AC7942300B35B35 /* WebPConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebPConverter.h; path = ../webpcnv/webpcnv/WebP/WebPConverter.h; sourceTree = "<group>"; };
+		94AB4B921AC79D96009A96EC /* WebPURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebPURLProtocol.h; sourceTree = "<group>"; };
+		94AB4B931AC79D96009A96EC /* WebPURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebPURLProtocol.m; sourceTree = "<group>"; };
 		94E4F9A41A5A8A2800997F20 /* WebP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E4F9A81A5A8A2800997F20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94E4F9A91A5A8A2800997F20 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -99,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				943699BF1AC7941900B35B35 /* Dependence */,
+				94AB4B921AC79D96009A96EC /* WebPURLProtocol.h */,
+				94AB4B931AC79D96009A96EC /* WebPURLProtocol.m */,
 				94E4F9AB1A5A8A2800997F20 /* AppDelegate.h */,
 				94E4F9AC1A5A8A2800997F20 /* AppDelegate.m */,
 				94E4F9AE1A5A8A2800997F20 /* ViewController.h */,
@@ -106,9 +105,6 @@
 				94E4F9B11A5A8A2800997F20 /* Main.storyboard */,
 				94E4F9B41A5A8A2800997F20 /* Images.xcassets */,
 				94E4F9B61A5A8A2800997F20 /* LaunchScreen.xib */,
-				940E5F221A5BC1C400BC6371 /* test_alpha.webp */,
-				940E5F241A5BDDCC00BC6371 /* test.webp */,
-				3C906DBB1A5EC194005696B6 /* test2.webp */,
 				94E4F9A71A5A8A2800997F20 /* Supporting Files */,
 			);
 			path = WebP;
@@ -200,9 +196,6 @@
 				94E4F9B31A5A8A2800997F20 /* Main.storyboard in Resources */,
 				94E4F9B81A5A8A2800997F20 /* LaunchScreen.xib in Resources */,
 				94E4F9B51A5A8A2800997F20 /* Images.xcassets in Resources */,
-				940E5F231A5BC1C400BC6371 /* test_alpha.webp in Resources */,
-				940E5F251A5BDDD600BC6371 /* test.webp in Resources */,
-				3C906DBC1A5EC1A6005696B6 /* test2.webp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +209,7 @@
 				94E4F9B01A5A8A2800997F20 /* ViewController.mm in Sources */,
 				94E4F9AD1A5A8A2800997F20 /* AppDelegate.m in Sources */,
 				94E4F9AA1A5A8A2800997F20 /* main.m in Sources */,
+				94AB4B941AC79D96009A96EC /* WebPURLProtocol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

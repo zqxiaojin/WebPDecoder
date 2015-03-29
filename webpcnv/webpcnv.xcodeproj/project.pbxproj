@@ -877,6 +877,7 @@
 				9436984A1AC791ED00B35B35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,17 +8,23 @@
 
 #import "ViewController.h"
 #import "WebPConverter.h"
-
+#import "WebPURLProtocol.h"
 @interface ViewController ()
-@property (retain, nonatomic) IBOutlet UIImageView *showImage;
+@property (retain, nonatomic) IBOutlet UIWebView *webView;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [NSURLProtocol registerClass:[WebPURLProtocol class]];
+
+    NSURL* url = [NSURL URLWithString:@"https://isparta.github.io/compare-webp/index.html#345"];
+    NSURLRequest* req = [[NSURLRequest alloc] initWithURL:url];
     
+    [self.webView loadRequest:req];
+/*
     NSString* inputImage = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"test_alpha.webp"];
     NSData* webpData = [NSData dataWithContentsOfFile:inputImage];
     
@@ -54,10 +60,7 @@
     UIImage* image = [UIImage imageWithData:pngData scale:3.0f];
     
     CGRect imageRect = CGRectMake(0, 0, image.size.width, image.size.height);
-    [self.showImage setBounds:imageRect];
-    [self.showImage setImage:image];
-    [self.showImage setBackgroundColor:[UIColor greenColor]];
-    
+*/
     
 
 }
@@ -68,7 +71,8 @@
 }
 
 - (void)dealloc {
-    [_showImage release];
+
+    [_webView release];
     [super dealloc];
 }
 @end

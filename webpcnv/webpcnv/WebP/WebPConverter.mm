@@ -72,7 +72,7 @@ enum WebPCovertState
 }
 
 
-- (NSData*)incrementalCovert:(NSData*)inputData
+- (NSData*)incrementalCovert:(NSData*)inputData withError:(WebPConverterError *)error
 {
     NSData* result = nil;
     switch (m_state)
@@ -138,6 +138,15 @@ enum WebPCovertState
                                                                        hasAlpha:m_config->input.has_alpha];
                 
                 result = [self dealAppendResult:status2];
+            } else {
+                switch (state) {
+                    case VP8_STATUS_INVALID_PARAM:
+                    case VP8_STATUS_BITSTREAM_ERROR:
+                        *error = WebPConverterError_wrongFormat;
+                        break;
+                    default:
+                        break;
+                }
             }
             
         }
