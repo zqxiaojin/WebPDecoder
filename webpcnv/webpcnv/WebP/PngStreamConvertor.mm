@@ -33,7 +33,7 @@ void my_png_write_data(png_structp png_ptr
 {
     //    /* with libpng15 next line causes pointer deference error; use libpng12 */
     PngStreamConvertor* covert = (PngStreamConvertor*)png_get_io_ptr(png_ptr); /* was png_ptr->io_ptr */
-    [covert receivePngData:data length:length];
+    [covert receivePngData:data length:(int)length];
 }
 
 @implementation PngStreamConvertor

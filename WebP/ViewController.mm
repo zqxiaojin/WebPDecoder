@@ -11,7 +11,6 @@
 
 @interface ViewController ()
 @property (retain, nonatomic) IBOutlet UIImageView *showImage;
-
 @end
 
 @implementation ViewController
@@ -20,11 +19,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    NSString* inputImage = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"test2.webp"];
+    NSString* inputImage = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"test_alpha.webp"];
     NSData* webpData = [NSData dataWithContentsOfFile:inputImage];
     
     int maxLength = [webpData length];
-    int maxPart = maxLength;//100;
+    int maxPart = maxLength;
     int partLength = maxLength / maxPart;
     
     WebPConverter* c = [[WebPConverter alloc] initWithType:EWebPConverter_toPNG];
@@ -32,7 +31,6 @@
     NSMutableData* pngData = [NSMutableData dataWithCapacity:4];
     //模拟 分段加入二进制流
     {
-        
         for (int i = 0 ; i < maxPart; ++i)
         {
             NSData* partData = [NSData dataWithBytes:((char*)[webpData bytes]) + i * partLength length:partLength];
@@ -43,7 +41,9 @@
         int resetLength = maxLength - resetOffset;
         if (resetLength > 0)
         {
-            NSData* partData = [NSData dataWithBytes:((char*)[webpData bytes]) + resetOffset length:maxLength - resetOffset];
+            NSData* partData = [NSData dataWithBytes:((char*)[webpData bytes]) + resetOffset
+                                              length:maxLength - resetOffset];
+            
             [pngData appendData:[c incrementalCovert:partData]];
         }
     }
@@ -53,12 +53,13 @@
     
     UIImage* image = [UIImage imageWithData:pngData scale:3.0f];
     
-    [self.showImage setBounds:CGRectMake(0, 0, image.size.width, image.size.height)];
+    CGRect imageRect = CGRectMake(0, 0, image.size.width, image.size.height);
+    [self.showImage setBounds:imageRect];
     [self.showImage setImage:image];
     [self.showImage setBackgroundColor:[UIColor greenColor]];
     
     
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
